@@ -9,10 +9,10 @@ const {User} = require('../models/user');
 
 const verifyToken = (req, res, next) => {
     
-     const token = req.headers.token;
+     const token = req.headers.authorization;
     if(token){
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+            const decoded = jwt.verify(token.split(' ')[1], process.env.JWT_SECRET_KEY);
             req.user = decoded;
             next();
         } catch (error) {
@@ -33,6 +33,8 @@ const verifyToken = (req, res, next) => {
  */
 const getAllMovies = asyncHandler(async (req, res) => {
     const movies = await Movie.find({});
+
+    console.log(movies);
     res.status(200).json(movies);
 });
 

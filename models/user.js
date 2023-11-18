@@ -20,10 +20,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    registration_date: {
-        type: Date,
-        default: Date.now
-    },
+    favoriteMovies: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movie'
+      }],
+      favoriteSeries: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Serie' 
+      }],
 })
 
 function validationRegisterUser(obj){
