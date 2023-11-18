@@ -50,7 +50,7 @@ const loginController = asynchandler(async (req, res)=>{
     if(!isMatchPassword){
         return res.status(400).json({message: "invalid username or password"})
     }
-    const token = jwt.sign({id:user._id, username: user.username}, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({id:user._id, username: user.username}, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
     const {password, ...other } = user._doc;
     res.status(200).json({...other, token})
     

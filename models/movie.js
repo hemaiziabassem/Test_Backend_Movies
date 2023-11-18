@@ -42,8 +42,8 @@ function validationAddMovie(obj){
 }
 function validationUpdateMovie(obj){
     const schema = joi.object({
-        title: joi.string().min(3).trim(),
-        description: joi.string().min(20).trim(),
+        title: joi.string().min(3),
+        description: joi.string().min(20),
         image: joi.string().required(),
         trailer: joi.string().required(),
     })

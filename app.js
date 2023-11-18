@@ -14,6 +14,7 @@ db_connect();
 
 app.use('/user', require('./routes/user'));
 app.use('/movies', require('./routes/movie'));
+app.use('/series', require('./routes/serie'));
 
 
 
