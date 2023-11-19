@@ -1,6 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const serieController = require('../controllers/serieController');
+const serieController = require("../controllers/serieController");
+const { verifyToken } = require("../middlewares/verifyToken");
 /**
  * @swagger
  * components:
@@ -23,16 +24,192 @@ const serieController = require('../controllers/serieController');
  *           type: number
  *
  */
+/**
+/**
+ * @swagger
+ * /series:
+ *   get:
+ *     summary: Get all series
+ *     description: Retrieve all series.
+ *     tags:
+ *       - Series
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successful response, returns all series.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Serie'
+ *       401:
+ *         description: Unauthorized - User not authenticated.
+ *       500:
+ *         description: Internal server error.
+ */
+router.get("/", verifyToken, serieController.getAllSeries);
 
+/**
+ * @swagger
+ * /series/top-rated-series:
+ *   get:
+ *     summary: Get top-rated series
+ *     description: Retrieve top-rated series.
+ *     tags:
+ *       - Series
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successful response, returns top-rated series.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Serie'
+ *       401:
+ *         description: Unauthorized - User not authenticated.
+ *       500:
+ *         description: Internal server error.
+ */
+router.get("/top-rated-series", verifyToken, serieController.getTopRatedSeries);
 
-router.get('/', serieController.verifyToken, serieController.getAllSeries);
-router.get('/top-rated-series', serieController.verifyToken, serieController.getTopRatedSeries);
-router.get('/serie-pages', serieController.verifyToken, serieController.getSeriesPerPage);
-router.post('/add-to-favorite', serieController.verifyToken, serieController.addToFavorites);
-router.delete('/remove-from-favorite', serieController.verifyToken, serieController.removeFromFavorites);
-router.get('/get-favorite-series', serieController.verifyToken, serieController.getFavoriteSeries);
-router.get('/search',serieController.verifyToken, serieController.searchSeries);
-router.get('/:seriesId',serieController.verifyToken, serieController.getSeriesDetails);
-router.get('/:seriesId/trailer', serieController.verifyToken, serieController.getTrailer);
+/**
+ * @swagger
+ * /series/serie-pages:
+ *   get:
+ *     summary: Get series with pagination.
+ *     description: Retrieve a paginated list of series.
+ *     tags:
+ *       - Series
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: The page number to retrieve (default is 1).
+ *       - in: query
+ *         name: perPage
+ *         schema:
+ *           type: integer
+ *         description: Number of series per page (default is 10).
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successful response, returns paginated series.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Serie'
+ *       500:
+ *         description: Server Error.
+ */
+
+router.get("/serie-pages", verifyToken, serieController.getSeriesPerPage);
+
+/**
+ * @swagger
+ * /series/search:
+ *   get:
+ *     summary: Search series
+ *     description: Endpoint to search series
+ *     tags:
+ *       - Series
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: title
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Title of the series to search
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Serie'
+ *       '401':
+ *         description: Unauthorized
+ *       '500':
+ *         description: Internal server error
+ */
+router.get("/search", verifyToken, serieController.searchSeries);
+
+/**
+ * @swagger
+ * /series/{seriesId}:
+ *   get:
+ *     summary: Get series details
+ *     description: Retrieve details of a specific series
+ *     tags:
+ *       - Series
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: seriesId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the series to retrieve details
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SeriesDetails'
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Series not found
+ *       '500':
+ *         description: Internal server error
+ */
+router.get("/:seriesId", verifyToken, serieController.getSeriesDetails);
+
+/**
+ * @swagger
+ * /series/{seriesId}/trailer:
+ *   get:
+ *     summary: Get trailer of a series
+ *     description: Retrieve the trailer of a specific series
+ *     tags:
+ *       - Series
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: seriesId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the series to retrieve the trailer
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Trailer'
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Series or trailer not found
+ *       '500':
+ *         description: Internal server error
+ */
+router.get("/:seriesId/trailer", verifyToken, serieController.getTrailer);
 
 module.exports = router;

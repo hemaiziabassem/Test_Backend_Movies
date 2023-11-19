@@ -1,33 +1,29 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const movieController = require('../controllers/movieController');
-
-
+const movieController = require("../controllers/movieController");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 /**
  * @swagger
  * components:
  *   schemas:
  *     Movie:
- *       type: object
+ *       type: 'object'
  *       properties:
  *         title:
- *           type: string
+ *           type: 'string'
  *         description:
- *           type: string
+ *           type: 'string'
  *         image:
- *           type: string
+ *           type: 'string'
  *         trailer:
- *           type: string
+ *           type: 'string'
  *         added_date:
- *           type: string
- *           format: date-time
+ *           type: 'string'
+ *           format: 'date-time'
  *         rating:
- *           type: number
- *
+ *           type: 'number'
  */
-
-
 /**
  * @swagger
  * openapi: 3.0.0
@@ -35,7 +31,6 @@ const movieController = require('../controllers/movieController');
  *   title: Movie API
  *   version: 1.0.0
  *   description: API documentation for Movie CRUD operations
- *
  * components:
  *   securitySchemes:
  *     bearerAuth:
@@ -47,15 +42,10 @@ const movieController = require('../controllers/movieController');
  *   /movies:
  *     get:
  *       summary: Get all movies
- *       description: Retrieve all movies. Requires a valid JWT token.
+ *       description: Retrieve all movies.
+ *       tags: [Movies]
  *       security:
  *         - bearerAuth: []
- *       parameters:
- *       - in: header
- *         name: token
- *         description: Bearer token for authentication
- *         schema:
- *           type: string
  *       responses:
  *         '200':
  *           description: A list of movies.
@@ -65,11 +55,8 @@ const movieController = require('../controllers/movieController');
  *                 type: array
  *                 items:
  *                   $ref: '#/components/schemas/Movie'
-*/
-router.get('/', movieController.verifyToken, movieController.getAllMovies);
-
-
-
+ */
+router.get("/", verifyToken, movieController.getAllMovies);
 
 /**
  * @swagger
@@ -79,14 +66,7 @@ router.get('/', movieController.verifyToken, movieController.getAllMovies);
  *     description: Retrieve top-rated movies
  *     tags: [Movies]
  *     security:
- *       - bearerAuth: [] 
- *     parameters:
- *       - in: header
- *         name: token
- *         description: Bearer token for authentication
- *         required: true
- *         schema:
- *           type: string
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: A list of top-rated movies
@@ -97,111 +77,141 @@ router.get('/', movieController.verifyToken, movieController.getAllMovies);
  *       '401':
  *         description: Unauthorized, requires token
  */
-router.get('/top-rated-movies',movieController.verifyToken, movieController.getTopRatedMovies);
+router.get("/top-rated-movies", verifyToken, movieController.getTopRatedMovies);
 
 /**
  * @swagger
  * /movies/movie-pages:
  *   get:
- *     summary: Get movies per page
- *     description: Retrieve movies paginated. Requires a valid JWT token passed in the Authorization header as Bearer token.
- *     tags: [Movies]
- *     security:
- *       - bearerAuth: [] 
+ *     summary: Get movies with pagination.
+ *     description: Retrieve a paginated list of movies.
+ *     tags:
+ *       - Movies
  *     parameters:
- *       - in: header
- *         name: token
- *         description: Bearer token for authentication
- *         required: true
+ *       - in: query
+ *         name: page
  *         schema:
- *           type: string
+ *           type: integer
+ *         description: The page number to retrieve (default is 1).
+ *       - in: query
+ *         name: perPage
+ *         schema:
+ *           type: integer
+ *         description: Number of movies per page (default is 10).
+ *     security:
+ *       - bearerAuth: []
  *     responses:
- *       '200':
- *         description: A page of movies
+ *       200:
+ *         description: Successful response, returns paginated movies.
  *         content:
  *           application/json:
  *             schema:
+ *               type: array
+ *               items:
  *                 $ref: '#/components/schemas/Movie'
- *       '401':
- *         description: Unauthorized, requires token
+ *       500:
+ *         description: Server Error.
  */
-router.get('/movie-pages', movieController.verifyToken, movieController.getMoviesPerPage);
+
+router.get("/movie-pages", verifyToken, movieController.getMoviesPerPage);
 
 /**
  * @swagger
- * /movies/add-to-favorite:
- *   post:
- *     summary: Add movie to favorites
- *     description: Add a movie to user's favorites. Requires a valid JWT token passed in the Authorization header as Bearer token.
- *     tags: [Movies]
+ * /movies/search:
+ *   get:
+ *     summary: Search movies
+ *     description: Endpoint to search movies
+ *     tags:
+ *       - Movies
  *     security:
  *       - bearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               movieId:
- *                 type: string
- *                 description: ID of the movie to be added to favorites
- *             required:
- *               - movieId
- *     responses:
- *       '200':
- *         description: Movie added to favorites
- *       '401':
- *         description: Unauthorized, requires token
- */
-router.post('/add-to-favorite',movieController.verifyToken,  movieController.addToFavorites);
-
-/**
- * @swagger
- * components:
- *   securitySchemes:
- *     BearerAuth:
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
-
-/**
- * @swagger
- * /remove-from-favorite:
- *   delete:
- *     security:
- *       - BearerAuth: []
- *     summary: Remove a movie from favorites
- *     description: Remove a movie from the user's favorites list. Requires a valid JWT token passed in the Authorization header as Bearer token and a movie ID.
  *     parameters:
  *       - in: query
+ *         name: title
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Title of the series to search
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Movie'
+ *       '401':
+ *         description: Unauthorized
+ *       '500':
+ *         description: Internal server error
+ */
+router.get("/search", verifyToken, movieController.searchMovies);
+
+/**
+ * @swagger
+ * /movies/{movieId}:
+ *   get:
+ *     summary: Get movie details by ID
+ *     description: Retrieve details of a specific movie by ID
+ *     tags:
+ *       - Movies
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
  *         name: movieId
  *         required: true
- *         description: ID of the movie to remove from favorites
  *         schema:
  *           type: string
- *       - in: header
- *         name: Authorization
- *         required: true
- *         description: JWT token in the format 'Bearer <token>'
- *         schema:
- *           type: string
+ *         description: ID of the movie to retrieve details
  *     responses:
- *       200:
- *         description: Movie removed from favorites successfully
- *       401:
- *         description: Unauthorized - Token is missing or invalid
- *       404:
- *         description: Movie not found in favorites
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/MovieDetails'
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Movie not found
+ *       '500':
+ *         description: Internal server error
  */
-router.delete('/remove-from-favorite', movieController.verifyToken,  movieController.removeMovieFromFavorites);
+router.get("/:movieId", verifyToken, movieController.getMovieDetails);
 
-
-router.get('/get-favorite-movies', movieController.verifyToken,  movieController.getFavoritesMovies);
-
-router.get('/search',movieController.verifyToken, movieController.searchMovies);
-router.get('/:movieId',movieController.verifyToken, movieController.getMovieDetails);
-router.get('/:movieId/trailer', movieController.verifyToken, movieController.getTrailer);
-
+/**
+ * @swagger
+ * /movies/{movieId}/trailer:
+ *   get:
+ *     summary: Get trailer of a movie by ID
+ *     description: Retrieve the trailer of a specific movie by ID
+ *     tags:
+ *       - Movies
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: movieId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the movie to retrieve the trailer
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Trailer'
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Movie or trailer not found
+ *       '500':
+ *         description: Internal server error
+ */
+router.get("/:movieId/trailer", verifyToken, movieController.getTrailer);
 
 module.exports = router;

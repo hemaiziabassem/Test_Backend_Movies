@@ -30,6 +30,8 @@ const userSchema = new mongoose.Schema({
       }],
 })
 
+
+
 function validationRegisterUser(obj){
     const schema = joi.object({
         username: joi.string().trim().min(3).required(),
