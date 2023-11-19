@@ -152,8 +152,8 @@ router.get("/search", verifyToken, movieController.searchMovies);
  * @swagger
  * /movies/{movieId}:
  *   get:
- *     summary: Get movie details by ID
- *     description: Retrieve details of a specific movie by ID
+ *     summary: Get movie details
+ *     description: Retrieve details of a specific movie
  *     tags:
  *       - Movies
  *     security:
@@ -168,10 +168,6 @@ router.get("/search", verifyToken, movieController.searchMovies);
  *     responses:
  *       '200':
  *         description: Successful response
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/MovieDetails'
  *       '401':
  *         description: Unauthorized
  *       '404':
@@ -180,38 +176,5 @@ router.get("/search", verifyToken, movieController.searchMovies);
  *         description: Internal server error
  */
 router.get("/:movieId", verifyToken, movieController.getMovieDetails);
-
-/**
- * @swagger
- * /movies/{movieId}/trailer:
- *   get:
- *     summary: Get trailer of a movie by ID
- *     description: Retrieve the trailer of a specific movie by ID
- *     tags:
- *       - Movies
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: movieId
- *         required: true
- *         schema:
- *           type: string
- *         description: ID of the movie to retrieve the trailer
- *     responses:
- *       '200':
- *         description: Successful response
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Trailer'
- *       '401':
- *         description: Unauthorized
- *       '404':
- *         description: Movie or trailer not found
- *       '500':
- *         description: Internal server error
- */
-router.get("/:movieId/trailer", verifyToken, movieController.getTrailer);
 
 module.exports = router;

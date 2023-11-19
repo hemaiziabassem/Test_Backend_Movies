@@ -6,6 +6,7 @@ const {
   removeFromFavorites,
   getFavorites,
 } = require("../controllers/userController");
+const { loginLimiter, registerLimiter } = require("../middlewares/limiter");
 const { verifyToken } = require("../middlewares/verifyToken");
 const router = express.Router();
 
@@ -144,7 +145,7 @@ const router = express.Router();
  *       '400':
  *         description: Invalid request body
  */
-router.post("/register", registerController);
+router.post("/register", registerLimiter, registerController);
 
 /**
  * @swagger
@@ -173,7 +174,7 @@ router.post("/register", registerController);
  *       '401':
  *         description: Unauthorized, invalid credentials
  */
-router.post("/login", loginController);
+router.post("/login", loginLimiter, loginController);
 
 /**
  * @swagger

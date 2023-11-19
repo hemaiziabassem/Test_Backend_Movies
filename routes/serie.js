@@ -166,10 +166,6 @@ router.get("/search", verifyToken, serieController.searchSeries);
  *     responses:
  *       '200':
  *         description: Successful response
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/SeriesDetails'
  *       '401':
  *         description: Unauthorized
  *       '404':
@@ -178,38 +174,5 @@ router.get("/search", verifyToken, serieController.searchSeries);
  *         description: Internal server error
  */
 router.get("/:seriesId", verifyToken, serieController.getSeriesDetails);
-
-/**
- * @swagger
- * /series/{seriesId}/trailer:
- *   get:
- *     summary: Get trailer of a series
- *     description: Retrieve the trailer of a specific series
- *     tags:
- *       - Series
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: seriesId
- *         required: true
- *         schema:
- *           type: string
- *         description: ID of the series to retrieve the trailer
- *     responses:
- *       '200':
- *         description: Successful response
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Trailer'
- *       '401':
- *         description: Unauthorized
- *       '404':
- *         description: Series or trailer not found
- *       '500':
- *         description: Internal server error
- */
-router.get("/:seriesId/trailer", verifyToken, serieController.getTrailer);
 
 module.exports = router;
