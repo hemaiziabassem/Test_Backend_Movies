@@ -20,13 +20,13 @@ const registerController = asynchandler(async (req, res) => {
 
   const { error } = await validationRegisterUser(data);
   if (error) {
-    res.status(400).json({ message: error.details[0].message });
+    return res.status(400).json({ message: error.details[0].message });
   }
   const user = new User(data);
   const salt = await bcrypt.genSaltSync(10);
   user.password = bcrypt.hashSync(user.password, salt);
   user.save();
-  res.status(201).json(user);
+  return res.status(201).json(user);
 });
 
 /**
@@ -39,7 +39,7 @@ const loginController = asynchandler(async (req, res) => {
   let data = req.body;
   const { error } = await validationLoginUser(data);
   if (error) {
-    res.status(400).json({ message: error.details[0].message });
+    return res.status(400).json({ message: error.details[0].message });
   }
   const user = await User.findOne({ username: req.body.username });
   if (!user) {
@@ -58,7 +58,7 @@ const loginController = asynchandler(async (req, res) => {
     { expiresIn: "24h" }
   );
   const { password, ...other } = user._doc;
-  res.status(200).json({ token });
+  return res.status(200).json({ token });
 });
 
 /**

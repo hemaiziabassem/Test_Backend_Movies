@@ -9,7 +9,7 @@ const Serie = require("../models/serie");
  */
 const getAllSeries = asyncHandler(async (req, res) => {
   const series = await Serie.find({});
-  res.status(200).json(series);
+  return res.status(200).json(series);
 });
 
 /**
@@ -21,9 +21,9 @@ const getAllSeries = asyncHandler(async (req, res) => {
 const getTopRatedSeries = asyncHandler(async (req, res) => {
   try {
     const topRatedSeries = await Serie.find().sort({ rating: -1 }).limit(5);
-    res.status(200).json(topRatedSeries);
+    return res.status(200).json(topRatedSeries);
   } catch (error) {
-    res.status(500).json({ message: " Server Error" });
+    return res.status(500).json({ message: " Server Error" });
   }
 });
 
@@ -41,9 +41,9 @@ const getSeriesPerPage = asyncHandler(async (req, res) => {
       .sort({ rating: -1 })
       .skip((page - 1) * perPage)
       .limit(perPage);
-    res.status(200).json(series);
+    return res.status(200).json(series);
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 });
 

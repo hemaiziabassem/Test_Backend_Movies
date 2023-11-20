@@ -9,7 +9,7 @@ const Movie = require("../models/movie");
  */
 const getAllMovies = asyncHandler(async (req, res) => {
   const movies = await Movie.find({});
-  res.status(200).json(movies);
+  return res.status(200).json(movies);
 });
 
 /**
@@ -21,9 +21,9 @@ const getAllMovies = asyncHandler(async (req, res) => {
 const getTopRatedMovies = asyncHandler(async (req, res) => {
   try {
     const topRatedMovies = await Movie.find().sort({ rating: -1 }).limit(5);
-    res.status(200).json(topRatedMovies);
+    return res.status(200).json(topRatedMovies);
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 });
 
@@ -42,9 +42,9 @@ const getMoviesPerPage = asyncHandler(async (req, res) => {
       .skip((page - 1) * perPage)
       .limit(perPage);
 
-    res.status(200).json(movies);
+    return res.status(200).json(movies);
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 });
 

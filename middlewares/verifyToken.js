@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
     try {
       const decoded = jwt.verify(
         token.split(" ")[1],
-        process.env.JWT_SECRET_KEY
+        process.env.JWT_SECRET_KEY || "testMovieApi"
       );
       req.user = decoded;
       next();
