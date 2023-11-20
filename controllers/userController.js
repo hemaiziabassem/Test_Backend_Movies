@@ -9,12 +9,6 @@ const Serie = require("../models/serie");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-/**
- * @desc        registration
- * @route       /user/
- * @method      POST
- * @access      public
- */
 const registerController = asynchandler(async (req, res) => {
   let data = req.body;
 
@@ -22,10 +16,18 @@ const registerController = asynchandler(async (req, res) => {
   if (error) {
     return res.status(400).json({ message: error.details[0].message });
   }
+  const existingUser = await User.findOne({
+    $or: [{ email: data.email }, { username: data.username }],
+  });
+  if (existingUser) {
+    return res.status(409).json({ message: "User already exists." });
+  }
+
   const user = new User(data);
   const salt = await bcrypt.genSaltSync(10);
   user.password = bcrypt.hashSync(user.password, salt);
-  user.save();
+  await user.save();
+
   return res.status(201).json(user);
 });
 
@@ -54,7 +56,7 @@ const loginController = asynchandler(async (req, res) => {
   }
   const token = jwt.sign(
     { id: user._id, username: user.username },
-    process.env.JWT_SECRET_KEY || "Test-movie-api",
+    process.env.JWT_SECRET_KEY || "testMovieApi",
     { expiresIn: "24h" }
   );
   const { password, ...other } = user._doc;
