@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "image": "inception_image.jpg",
+    "trailer": "inception_trailer.mp4",
+    "added_date": "2022-01-15T00:00:00.000Z",
+    "rating": 8.8
+  },
+  {
+    "title": "The Dark Knight",
+    "description": "When the menace known as The Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "image": "dark_knight_image.jpg",
+    "trailer": "dark_knight_trailer.mp4",
+    "added_date": "2022-02-20T00:00:00.000Z",
+    "rating": 9.0
+  },
+  {
+    "title": "The Matrix",
+    "description": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers.",
+    "image": "matrix_image.jpg",
+    "trailer": "matrix_trailer.mp4",
+    "added_date": "2022-03-25T00:00:00.000Z",
+    "rating": 8.7
+  },
+  {
+    "title": "Pulp Fiction",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "image": "pulp_fiction_image.jpg",
+    "trailer": "pulp_fiction_trailer.mp4",
+    "added_date": "2022-04-30T00:00:00.000Z",
+    "rating": 8.9
+  },
+  {
+    "title": "Forrest Gump",
+    "description": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
+    "image": "forrest_gump_image.jpg",
+    "trailer": "forrest_gump_trailer.mp4",
+    "added_date": "2022-05-05T00:00:00.000Z",
+    "rating": 8.8
+  },
+  {
+    "title": "Fight Club",
+    "description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+    "image": "fight_club_image.jpg",
+    "trailer": "fight_club_trailer.mp4",
+    "added_date": "2022-06-10T00:00:00.000Z",
+    "rating": 8.8
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+    "image": "silence_of_the_lambs_image.jpg",
+    "trailer": "silence_of_the_lambs_trailer.mp4",
+    "added_date": "2022-07-15T00:00:00.000Z",
+    "rating": 8.6
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "description": "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency.",
+    "image": "shawshank_redemption_image.jpg",
+    "trailer": "shawshank_redemption_trailer.mp4",
+    "added_date": "2022-08-20T00:00:00.000Z",
+    "rating": 9.3
+  },
+  {
+    "title": "Goodfellas",
+    "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+    "image": "goodfellas_image.jpg",
+    "trailer": "goodfellas_trailer.mp4",
+    "added_date": "2022-09-25T00:00:00.000Z",
+    "rating": 8.7
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "image": "lord_of_the_rings_return_of_the_king_image.jpg",
+    "trailer": "lord_of_the_rings_return_of_the_king_trailer.mp4",
+    "added_date": "2022-10-30T00:00:00.000Z",
+    "rating": 8.9
+  },
+  {
+    "title": "The Godfather",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "image": "godfather_image.jpg",
+    "trailer": "godfather_trailer.mp4",
+    "added_date": "2022-11-05T00:00:00.000Z",
+    "rating": 9.2
+  },
+  {
+    "title": "The Dark Knight Rises",
+    "description": "Eight years after the Joker's reign of anarchy, Batman, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City from the brutal guerrilla terrorist Bane.",
+    "image": "dark_knight_rises_image.jpg",
+    "trailer": "dark_knight_rises_trailer.mp4",
+    "added_date": "2022-12-10T00:00:00.000Z",
+    "rating": 8.4
+  },
+  {
+    "title": "The Departed",
+    "description": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    "image": "departed_image.jpg",
+    "trailer": "departed_trailer.mp4",
+    "added_date": "2023-01-15T00:00:00.000Z",
+    "rating": 8.5
+  },
+  {
+    "title": "Gladiator",
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "image": "gladiator_image.jpg",
+    "trailer": "gladiator_trailer.mp4",
+    "added_date": "2023-02-20T00:00:00.000Z",
+    "rating": 8.5
+  },
+  {
+    "title": "The Prestige",
+    "description": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    "image": "prestige_image.jpg",
+    "trailer": "prestige_trailer.mp4",
+    "added_date": "2023-03-25T00:00:00.000Z",
+    "rating": 8.5
+  }
+]

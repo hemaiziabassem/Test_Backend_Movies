@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Stranger Things",
+    "description": "A group of kids in a small town uncover supernatural mysteries.",
+    "image": "stranger_things_image.jpg",
+    "trailer": "stranger_things_trailer.mp4",
+    "numberOfEpisodes": 25,
+    "seasons": 4,
+    "rating": 8.7,
+    "added_date": "2022-01-15T00:00:00Z"
+  },
+  {
+    "title": "Game of Thrones",
+    "description": "A medieval fantasy series about power struggles among noble families.",
+    "image": "game_of_thrones_image.jpg",
+    "trailer": "game_of_thrones_trailer.mp4",
+    "numberOfEpisodes": 73,
+    "seasons": 8,
+    "rating": 9.3,
+    "added_date": "2022-02-18T00:00:00Z"
+  },
+  {
+    "title": "Breaking Bad",
+    "description": "A high school chemistry teacher turned methamphetamine manufacturer.",
+    "image": "breaking_bad_image.jpg",
+    "trailer": "breaking_bad_trailer.mp4",
+    "numberOfEpisodes": 62,
+    "seasons": 5,
+    "rating": 9.5,
+    "added_date": "2022-03-20T00:00:00Z"
+  },
+  {
+    "title": "Friends",
+    "description": "A sitcom following the lives of a group of friends living in New York City.",
+    "image": "friends_image.jpg",
+    "trailer": "friends_trailer.mp4",
+    "numberOfEpisodes": 236,
+    "seasons": 10,
+    "rating": 8.9,
+    "added_date": "2022-04-25T00:00:00Z"
+  },
+  {
+    "title": "The Office",
+    "description": "A mockumentary-style sitcom set in a mundane office environment.",
+    "image": "the_office_image.jpg",
+    "trailer": "the_office_trailer.mp4",
+    "numberOfEpisodes": 201,
+    "seasons": 9,
+    "rating": 8.8,
+    "added_date": "2022-05-30T00:00:00Z"
+  },
+  {
+    "title": "Money Heist",
+    "description": "A criminal mastermind recruits a group of individuals for a heist.",
+    "image": "money_heist_image.jpg",
+    "trailer": "money_heist_trailer.mp4",
+    "numberOfEpisodes": 55,
+    "seasons": 5,
+    "rating": 8.4,
+    "added_date": "2022-06-21T00:00:00Z"
+  },
+  {
+    "title": "Stranger Things",
+    "description": "A group of kids in a small town uncover supernatural mysteries.",
+    "image": "stranger_things_image.jpg",
+    "trailer": "stranger_things_trailer.mp4",
+    "numberOfEpisodes": 25,
+    "seasons": 4,
+    "rating": 8.7,
+    "added_date": "2022-07-12T00:00:00Z"
+  },
+  {
+    "title": "Sherlock",
+    "description": "Modern adaptation of Sherlock Holmes detective stories.",
+    "image": "sherlock_image.jpg",
+    "trailer": "sherlock_trailer.mp4",
+    "numberOfEpisodes": 13,
+    "seasons": 4,
+    "rating": 9.1,
+    "added_date": "2022-08-05T00:00:00Z"
+  },
+  {
+    "title": "Black Mirror",
+    "description": "Anthology series exploring the darker aspects of technology.",
+    "image": "black_mirror_image.jpg",
+    "trailer": "black_mirror_trailer.mp4",
+    "numberOfEpisodes": 22,
+    "seasons": 5,
+    "rating": 8.8,
+    "added_date": "2022-09-14T00:00:00Z"
+  },
+  {
+    "title": "The Crown",
+    "description": "A historical drama portraying the reign of Queen Elizabeth II.",
+    "image": "the_crown_image.jpg",
+    "trailer": "the_crown_trailer.mp4",
+    "numberOfEpisodes": 40,
+    "seasons": 5,
+    "rating": 8.7,
+    "added_date": "2022-10-20T00:00:00Z"
+  },
+  {
+    "title": "The Mandalorian",
+    "description": "A bounty hunter navigates the galaxy's outer reaches in the Star Wars universe.",
+    "image": "mandalorian_image.jpg",
+    "trailer": "mandalorian_trailer.mp4",
+    "numberOfEpisodes": 24,
+    "seasons": 2,
+    "rating": 8.7,
+    "added_date": "2022-11-30T00:00:00Z"
+  },
+  {
+    "title": "The Witcher",
+    "description": "A monster hunter struggles to find his place in a world where people often prove more wicked than beasts.",
+    "image": "witcher_image.jpg",
+    "trailer": "witcher_trailer.mp4",
+    "numberOfEpisodes": 16,
+    "seasons": 2,
+    "rating": 8.2,
+    "added_date": "2022-12-05T00:00:00Z"
+  },
+  {
+    "title": "Peaky Blinders",
+    "description": "A gangster family epic set in Birmingham, England, in the aftermath of World War I.",
+    "image": "peaky_blinders_image.jpg",
+    "trailer": "peaky_blinders_trailer.mp4",
+    "numberOfEpisodes": 30,
+    "seasons": 6,
+    "rating": 8.8,
+    "added_date": "2023-01-09T00:00:00Z"
+  },
+  {
+    "title": "Ozark",
+    "description": "A financial planner relocates his family to the Ozarks to launder money for a Mexican drug cartel.",
+    "image": "ozark_image.jpg",
+    "trailer": "ozark_trailer.mp4",
+    "numberOfEpisodes": 33,
+    "seasons": 4,
+    "rating": 8.4,
+    "added_date": "2023-02-20T00:00:00Z"
+  },
+  {
+    "title": "Westworld",
+    "description": "A theme park populated by android hosts allows visitors to live out their wildest fantasies.",
+    "image": "westworld_image.jpg",
+    "trailer": "westworld_trailer.mp4",
+    "numberOfEpisodes": 28,
+    "seasons": 3,
+    "rating": 8.6,
+    "added_date": "2023-03-15T00:00:00Z"
+  }
+]
