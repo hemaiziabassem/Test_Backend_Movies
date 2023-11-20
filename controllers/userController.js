@@ -54,11 +54,11 @@ const loginController = asynchandler(async (req, res) => {
   }
   const token = jwt.sign(
     { id: user._id, username: user.username },
-    process.env.JWT_SECRET_KEY,
+    process.env.JWT_SECRET_KEY || "Test-movie-api",
     { expiresIn: "24h" }
   );
   const { password, ...other } = user._doc;
-  res.status(200).json({ ...other, token });
+  res.status(200).json({ token });
 });
 
 /**
